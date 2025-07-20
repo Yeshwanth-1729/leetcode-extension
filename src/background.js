@@ -1,5 +1,5 @@
 // Background script for handling Gemini API calls and extension lifecycle
-let GEMINI_API_KEY = "AIzaSyAhpPCSPoDm6MliXwHCMoRVx3lleCMp2jE"; // Default fallback key
+let GEMINI_API_KEY = "<Your default api key>"; // Default fallback key
 const GEMINI_API_URL =
   "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
