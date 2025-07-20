@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeetCode Focus</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>LeetCode Focus</h1>
+        <p>Enhance your problem-solving experience</p>
+      </header>
+
+      <div class="tabs">
+        <div class="tab active" data-tab="assistant">
+          <i class="fas fa-robot"></i> AI Assistant
+        </div>
+        <div class="tab" data-tab="focus">
+          <i class="fas fa-eye-slash"></i> Focus Mode
+        </div>
+        <div class="tab" data-tab="roadmap">
+          <i class="fas fa-map-signs"></i> Roadmap
+        </div>
+      </div>
+
+      <div class="tab-content">
+        <!-- AI Assistant Tab -->
+        <div class="content-section active" id="assistant-section">
+          <div class="section-title">
+            <i class="fas fa-robot"></i>
+            <h2>AI Coding Assistant</h2>
+          </div>
+
+          <!-- API Key Configuration -->
+          <div class="action-card api-key-card">
+            <h3><i class="fas fa-key"></i> API Key Configuration</h3>
+            <p>Enter your Gemini API key for unlimited AI assistance.</p>
+            <div class="api-key-input-group">
+              <input
+                type="password"
+                id="api-key-input"
+                class="api-key-input"
+                placeholder="Enter your Gemini API key (AIzaSy...)"
+                maxlength="100"
+              />
+              <button class="btn secondary" id="save-api-key-btn">
+                <i class="fas fa-save"></i> Save Key
+              </button>
+            </div>
+            <div class="api-key-status" id="api-key-status">
+              <span class="status-text">No API key configured</span>
+            </div>
+            <div class="api-key-help">
+              <small>
+                <i class="fas fa-info-circle"></i>
+                Get your free API key from
+                <a
+                  href="https://makersuite.google.com/app/apikey"
+                  target="_blank"
+                  class="api-link"
+                >
+                  Google AI Studio
+                </a>
+              </small>
+            </div>
+          </div>
+
+          <div class="action-card">
+            <h3><i class="fas fa-lightbulb"></i> Get Hint</h3>
+            <p>
+              Get a subtle hint to guide you without giving away the solution.
+              Point out edge cases you might be missing.
+            </p>
+            <div class="ai-response" id="hint-response">
+              <p>
+                Click "Get Hint" to receive AI-powered guidance for your current
+                problem.
+              </p>
+            </div>
+            <button class="btn" id="get-hint-btn">
+              <i class="fas fa-bolt"></i> Get Hint
+            </button>
+          </div>
+
+          <div class="action-card">
+            <h3><i class="fas fa-code"></i> Improve Code</h3>
+            <p>
+              Get suggestions to optimize your solution for better performance
+              and readability.
+            </p>
+            <div class="code-block" id="code-sample">
+              <p>Your current code will appear here...</p>
+            </div>
+            <button class="btn" id="improve-code-btn">
+              <i class="fas fa-magic"></i> Improve Code
+            </button>
+          </div>
+        </div>
+
+        <!-- Focus Mode Tab -->
+        <div class="content-section" id="focus-section">
+          <div class="section-title">
+            <i class="fas fa-eye-slash"></i>
+            <h2>Focus Mode Settings</h2>
+          </div>
+
+          <p>
+            Minimize distractions to help you concentrate on problem-solving.
+          </p>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="hide-solutions" checked />
+            <label for="hide-solutions">Hide Solutions Tab</label>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="hide-hints" checked />
+            <label for="hide-hints">Hide Hints</label>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="hide-difficulty" />
+            <label for="hide-difficulty">Hide Difficulty Level</label>
+          </div>
+
+          <div class="theme-selector">
+            <label for="theme-select">UI Theme:</label>
+            <select id="theme-select" class="theme-dropdown">
+              <option value="dark">Dark Glassmorphic</option>
+              <option value="light">Light Glassmorphic</option>
+            </select>
+          </div>
+
+          <button class="btn" id="apply-focus-btn">
+            <i class="fas fa-check-circle"></i> Apply Focus Settings
+          </button>
+        </div>
+
+        <!-- Roadmap Tab -->
+        <div class="content-section" id="roadmap-section">
+          <div class="section-title">
+            <i class="fas fa-map-signs"></i>
+            <h2>Learning Roadmap</h2>
+          </div>
+
+          <p>
+            Structured learning paths to master algorithms and data structures.
+          </p>
+
+          <div class="action-card">
+            <h3><i class="fas fa-bolt"></i> Generate Roadmap</h3>
+            <p>
+              Generate a personalized learning roadmap based on your skill level
+              and goals.
+            </p>
+
+            <div class="input-group">
+              <label for="skill-level">Skill Level:</label>
+              <select id="skill-level" class="select-input">
+                <option value="beginner">Beginner</option>
+                <option value="intermediate" selected>Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label for="duration">Duration:</label>
+              <select id="duration" class="select-input">
+                <option value="1">1 Month</option>
+                <option value="2">2 Months</option>
+                <option value="3" selected>3 Months</option>
+                <option value="6">6 Months</option>
+                <option value="12">12 Months</option>
+              </select>
+            </div>
+
+            <button class="btn secondary" id="generate-roadmap-btn">
+              <i class="fas fa-magic"></i> Generate AI Roadmap
+            </button>
+          </div>
+
+          <div class="action-card">
+            <h3><i class="fas fa-bolt"></i> Arrays & Hashing</h3>
+            <p>
+              Master fundamental techniques for array manipulation and hashing.
+            </p>
+            <span class="tag">Beginner Friendly</span>
+            <button class="btn secondary" id="select-topic-btn">
+              <i class="fas fa-play"></i> Start Learning Path
+            </button>
+          </div>
+
+          <h3 style="margin: 20px 0 10px">Your Progress</h3>
+          <ul class="roadmap-list" id="roadmap-progress">
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <div>
+                <strong>Two Sum</strong>
+                <div class="status-indicator">
+                  <span class="status-dot completed"></span>
+                  Completed
+                </div>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-sync-alt"></i>
+              <div>
+                <strong>Valid Anagram</strong>
+                <div class="status-indicator">
+                  <span class="status-dot in-progress"></span>
+                  In Progress
+                </div>
+              </div>
+            </li>
+            <li>
+              <i class="far fa-circle"></i>
+              <div>
+                <strong>Group Anagrams</strong>
+                <div class="status-indicator">
+                  <span class="status-dot not-started"></span>
+                  Not Started
+                </div>
+              </div>
+            </li>
+            <li>
+              <i class="far fa-circle"></i>
+              <div>
+                <strong>Top K Frequent Elements</strong>
+                <div class="status-indicator">
+                  <span class="status-dot not-started"></span>
+                  Not Started
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <p>Generating AI response...</p>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
