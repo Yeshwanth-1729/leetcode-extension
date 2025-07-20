@@ -34,7 +34,7 @@
   "web_accessible_resources": [
     {
       "resources": ["src/*"],
-      "matches": ["https://leetcode.com/*", "https://*.leetcode.com/*"]
+      "matches": ["https://leetcode.com/*", "https://leetcode.com/*"]
     }
   ]
 }
