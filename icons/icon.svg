@@ -1,0 +1,21 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="56" fill="url(#gradient)" stroke="#ffffff" stroke-width="4"/>
+  
+  <!-- Target icon (focus symbol) -->
+  <circle cx="64" cy="64" r="35" fill="none" stroke="#ffffff" stroke-width="3"/>
+  <circle cx="64" cy="64" r="25" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="64" cy="64" r="15" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="64" cy="64" r="6" fill="#ffffff"/>
+  
+  <!-- AI indicator (small sparkle) -->
+  <path d="M45 25 L48 32 L55 35 L48 38 L45 45 L42 38 L35 35 L42 32 Z" fill="#ffffff" opacity="0.8"/>
+  <path d="M85 88 L87 93 L92 95 L87 97 L85 102 L83 97 L78 95 L83 93 Z" fill="#ffffff" opacity="0.6"/>
+</svg>

@@ -1,0 +1,189 @@
+/* Content CSS for LeetCode Focus Extension */
+
+/* Extension indicator animations */
+@keyframes leetcode-focus-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes leetcode-focus-fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes leetcode-focus-slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes leetcode-focus-slideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* Custom scrollbar for dark mode */
+.dark-theme *::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark-theme *::-webkit-scrollbar-track {
+  background: #2d2d2d;
+}
+
+.dark-theme *::-webkit-scrollbar-thumb {
+  background: #4facfe;
+  border-radius: 4px;
+}
+
+.dark-theme *::-webkit-scrollbar-thumb:hover {
+  background: #00f2fe;
+}
+
+/* Enhanced focus mode styles */
+.leetcode-focus-hidden {
+  display: none !important;
+}
+
+.leetcode-focus-blur {
+  filter: blur(5px) !important;
+  pointer-events: none !important;
+}
+
+/* Smooth transitions for focus mode changes */
+.leetcode-focus-transition {
+  transition: all 0.3s ease !important;
+}
+
+/* Custom dark theme enhancements */
+.dark-theme {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --accent: #4facfe;
+  --accent-hover: #00f2fe;
+}
+
+.dark-theme .ant-layout,
+.dark-theme .ant-layout-content {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.dark-theme .ant-card {
+  background-color: var(--bg-secondary) !important;
+  border-color: #404040 !important;
+}
+
+.dark-theme .ant-card-body {
+  color: var(--text-primary) !important;
+}
+
+/* Code editor dark theme */
+.dark-theme .monaco-editor,
+.dark-theme .monaco-editor .margin {
+  background-color: #1e1e1e !important;
+}
+
+.dark-theme .monaco-editor .view-lines {
+  color: #d4d4d4 !important;
+}
+
+/* Problem description dark theme */
+.dark-theme [data-track-load="description_content"],
+.dark-theme .question-content {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Button hover effects */
+.dark-theme .ant-btn:hover {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+
+/* Focus mode active indicator */
+.leetcode-focus-active::before {
+  content: "🎯";
+  position: fixed;
+  top: 10px;
+  right: 50px;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  color: #0f172a;
+  padding: 4px 8px;
+  border-radius: 50%;
+  font-size: 12px;
+  z-index: 10000;
+  animation: leetcode-focus-pulse 2s infinite;
+}
+
+@keyframes leetcode-focus-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Hide distracting elements in ultra focus mode */
+.leetcode-focus-ultra .ant-layout-sider,
+.leetcode-focus-ultra [class*="sidebar"],
+.leetcode-focus-ultra [class*="discussion"],
+.leetcode-focus-ultra [class*="comment"] {
+  display: none !important;
+}
+
+/* Smooth appearance for dynamically loaded content */
+.leetcode-focus-appear {
+  animation: leetcode-focus-fadeIn 0.3s ease-in-out;
+}
+
+/* Custom selection colors in dark mode */
+.dark-theme ::selection {
+  background-color: rgba(79, 172, 254, 0.3) !important;
+  color: #ffffff !important;
+}
+
+.dark-theme ::-moz-selection {
+  background-color: rgba(79, 172, 254, 0.3) !important;
+  color: #ffffff !important;
+}
+
+/* Focus ring for accessibility */
+.dark-theme *:focus-visible {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 2px !important;
+  border-radius: 4px !important;
+}

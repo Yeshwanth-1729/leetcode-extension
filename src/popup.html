@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeetCode Focus</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>LeetCode Focus</h1>
+        <p>Enhance your problem-solving experience</p>
+      </header>
+
+      <div class="tabs">
+        <div class="tab active" data-tab="assistant">
+          <i class="fas fa-robot"></i> AI Assistant
+        </div>
+        <div class="tab" data-tab="focus">
+          <i class="fas fa-eye-slash"></i> Focus Mode
+        </div>
+        <div class="tab" data-tab="roadmap">
+          <i class="fas fa-map-signs"></i> Roadmap
+        </div>
+      </div>
+
+      <div class="tab-content">
+        <!-- AI Assistant Tab -->
+        <div class="content-section active" id="assistant-section">
+          <div class="section-title">
+            <i class="fas fa-robot"></i>
+            <h2>AI Coding Assistant</h2>
+          </div>
+
+          <!-- AI Provider & Model Selection -->
+          <div class="action-card ai-config-card">
+            <h3><i class="fas fa-brain"></i> AI Provider & Model</h3>
+            <p>Choose your preferred AI provider and model for best results.</p>
+            
+            <div class="config-row">
+              <label for="ai-provider-select">AI Provider:</label>
+              <select id="ai-provider-select" class="select-input">
+                <option value="gemini">Google Gemini</option>
+              </select>
+            </div>
+
+            <div class="config-row">
+              <label for="ai-model-select">Model:</label>
+              <select id="ai-model-select" class="select-input">
+                <option value="gemini-1.5-flash">Gemini 1.5 Flash (Fast)</option>
+                <option value="gemini-1.5-pro">Gemini 1.5 Pro (Smart)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- API Key Configuration -->
+          <div class="action-card api-key-card">
+            <h3><i class="fas fa-key"></i> API Key Configuration</h3>
+            <p>Enter your API key for unlimited AI assistance.</p>
+            <div class="api-key-input-group">
+              <input
+                type="password"
+                id="api-key-input"
+                class="api-key-input"
+                placeholder="Enter your API key..."
+                maxlength="200"
+              />
+              <button class="btn secondary" id="save-api-key-btn">
+                <i class="fas fa-save"></i> Save Key
+              </button>
+            </div>
+            <div class="api-key-status" id="api-key-status">
+              <span class="status-text">No API key configured</span>
+            </div>
+            <div class="api-key-help">
+              <small>
+                <i class="fas fa-info-circle"></i>
+                <span id="api-help-text">Get your free API key from Google AI Studio</span>
+                <a href="#" id="api-help-link" target="_blank" class="api-link">
+                  Get API Key
+                </a>
+              </small>
+            </div>
+          </div>
+
+          <!-- Enhanced Get Hint -->
+          <div class="action-card">
+            <h3><i class="fas fa-lightbulb"></i> Smart Hint System</h3>
+            <p>
+              Get intelligent, progressive hints that adapt to your current understanding.
+            </p>
+            <div class="hint-options">
+              <label class="checkbox-container">
+                <input type="checkbox" id="hint-include-approach" checked>
+                <span class="checkmark"></span>
+                Include approach suggestion
+              </label>
+              <label class="checkbox-container">
+                <input type="checkbox" id="hint-include-edge-cases" checked>
+                <span class="checkmark"></span>
+                Highlight edge cases
+              </label>
+              <label class="checkbox-container">
+                <input type="checkbox" id="hint-include-complexity">
+                <span class="checkmark"></span>
+                Show complexity analysis
+              </label>
+            </div>
+            <div class="ai-response" id="hint-response">
+              <div class="hint-placeholder">
+                <i class="fas fa-lightbulb"></i>
+                <p>Click "Get Smart Hint" to receive personalized guidance for your current problem.</p>
+              </div>
+            </div>
+            <button class="btn" id="get-hint-btn">
+              <i class="fas fa-bolt"></i> Get Smart Hint
+            </button>
+          </div>
+
+          <!-- Interactive Chatbot -->
+          <div class="action-card chatbot-card">
+            <h3><i class="fas fa-comments"></i> AI Coding Mentor</h3>
+            <div class="chat-status" id="chat-status">
+              <span class="status-indicator" id="chat-status-indicator">
+                <i class="fas fa-circle"></i>
+                <span id="chat-status-text">Ready to chat</span>
+              </span>
+            </div>
+              <div id="detected-language" style="font-size:12px;margin:-4px 0 6px 0;color:#666;">
+                Detected Language: <span id="detected-language-value">(detecting...)</span>
+              </div>
+            <p>
+              Chat with your AI mentor to discuss the problem, get explanations, or brainstorm solutions.
+            </p>
+            <div class="chat-container" id="chat-container">
+              <div class="chat-messages" id="chat-messages">
+                <div class="chat-message ai-message">
+                  <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                  </div>
+                  <div class="message-content">
+                    <p>Hi! I'm your AI coding mentor. I can help you understand the problem, discuss approaches, explain concepts, or review your code. What would you like to explore?</p>
+                  </div>
+                </div>
+              </div>
+              <div class="chat-input-container">
+                <input 
+                  type="text" 
+                  id="chat-input" 
+                  class="chat-input" 
+                  placeholder="Ask about the problem, approaches, or coding concepts..."
+                  maxlength="500"
+                />
+                <button class="btn chat-send-btn" id="chat-send-btn">
+                  <i class="fas fa-paper-plane"></i>
+                </button>
+              </div>
+            </div>
+            <div class="chat-suggestions">
+              <span class="suggestion-chip" data-suggestion="Explain the problem in simple terms">
+                💡 Explain problem
+              </span>
+              <span class="suggestion-chip" data-suggestion="What's the optimal approach?">
+                🎯 Best approach
+              </span>
+              <span class="suggestion-chip" data-suggestion="Review my code">
+                🔍 Code review
+              </span>
+              <span class="suggestion-chip" data-suggestion="What are the edge cases?">
+                ⚠️ Edge cases
+              </span>
+            </div>
+          </div>
+
+          <div class="action-card">
+            <h3><i class="fas fa-code"></i> Improve Code</h3>
+            <p>
+              Get suggestions to optimize your solution for better performance
+              and readability.
+            </p>
+            <div class="code-block" id="code-sample">
+              <p>Your current code will appear here...</p>
+            </div>
+            <button class="btn" id="improve-code-btn">
+              <i class="fas fa-magic"></i> Improve Code
+            </button>
+          </div>
+        </div>
+
+        <!-- Focus Mode Tab -->
+        <div class="content-section" id="focus-section">
+          <div class="section-title">
+            <i class="fas fa-eye-slash"></i>
+            <h2>Focus Mode Settings</h2>
+          </div>
+
+          <p>
+            Minimize distractions to help you concentrate on problem-solving.
+          </p>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="hide-solutions" checked />
+            <label for="hide-solutions">Hide Solutions Tab</label>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="hide-hints" checked />
+            <label for="hide-hints">Hide Hints</label>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="hide-difficulty" />
+            <label for="hide-difficulty">Hide Difficulty Level</label>
+          </div>
+
+          <div class="theme-selector">
+            <label for="theme-select">UI Theme:</label>
+            <select id="theme-select" class="theme-dropdown">
+              <option value="dark">Dark Glassmorphic</option>
+              <option value="light">Light Glassmorphic</option>
+            </select>
+          </div>
+
+          <button class="btn" id="apply-focus-btn">
+            <i class="fas fa-check-circle"></i> Apply Focus Settings
+          </button>
+        </div>
+
+        <!-- Roadmap Tab -->
+        <div class="content-section" id="roadmap-section">
+          <div class="section-title">
+            <i class="fas fa-map-signs"></i>
+            <h2>Learning Roadmap</h2>
+          </div>
+
+          <p>
+            Structured learning paths to master algorithms and data structures.
+          </p>
+
+          <div class="action-card">
+            <h3><i class="fas fa-bolt"></i> Generate Roadmap</h3>
+            <p>
+              Generate a personalized learning roadmap based on your skill level
+              and goals.
+            </p>
+
+            <div class="input-group">
+              <label for="skill-level">Skill Level:</label>
+              <select id="skill-level" class="select-input">
+                <option value="beginner">Beginner</option>
+                <option value="intermediate" selected>Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label for="duration">Duration:</label>
+              <select id="duration" class="select-input">
+                <option value="1">1 Month</option>
+                <option value="2">2 Months</option>
+                <option value="3" selected>3 Months</option>
+                <option value="6">6 Months</option>
+                <option value="12">12 Months</option>
+              </select>
+            </div>
+
+            <button class="btn secondary" id="generate-roadmap-btn">
+              <i class="fas fa-magic"></i> Generate AI Roadmap
+            </button>
+          </div>
+
+          <div class="action-card">
+            <h3><i class="fas fa-bolt"></i> Arrays & Hashing</h3>
+            <p>
+              Master fundamental techniques for array manipulation and hashing.
+            </p>
+            <span class="tag">Beginner Friendly</span>
+            <button class="btn secondary" id="select-topic-btn">
+              <i class="fas fa-play"></i> Start Learning Path
+            </button>
+          </div>
+
+          <h3 style="margin: 20px 0 10px">Your Progress</h3>
+          <ul class="roadmap-list" id="roadmap-progress">
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <div>
+                <strong>Two Sum</strong>
+                <div class="status-indicator">
+                  <span class="status-dot completed"></span>
+                  Completed
+                </div>
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-sync-alt"></i>
+              <div>
+                <strong>Valid Anagram</strong>
+                <div class="status-indicator">
+                  <span class="status-dot in-progress"></span>
+                  In Progress
+                </div>
+              </div>
+            </li>
+            <li>
+              <i class="far fa-circle"></i>
+              <div>
+                <strong>Group Anagrams</strong>
+                <div class="status-indicator">
+                  <span class="status-dot not-started"></span>
+                  Not Started
+                </div>
+              </div>
+            </li>
+            <li>
+              <i class="far fa-circle"></i>
+              <div>
+                <strong>Top K Frequent Elements</strong>
+                <div class="status-indicator">
+                  <span class="status-dot not-started"></span>
+                  Not Started
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <p>Generating AI response...</p>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
