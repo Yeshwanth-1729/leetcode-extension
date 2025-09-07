@@ -1,5 +1,5 @@
 // Background script for handling Gemini API and extension lifecycle
-let GEMINI_API_KEY = "AIzaSyAhpPCSPoDm6MliXwHCMoRVx3lleCMp2jE"; // Default fallback key
+let GEMINI_API_KEY = "Api key"; // Default fallback key
 let USER_API_KEY = "";
 let CURRENT_PROVIDER = "gemini";
 let CURRENT_MODEL = "gemini-1.5-flash";
